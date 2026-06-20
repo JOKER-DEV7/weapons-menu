@@ -1,18 +1,23 @@
-// استبدل 'macho' باسم السكربت الخاص بك (اسم المجلد في السيرفر)
-const resourceName = 'macho'; 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-function triggerSpawn(weaponCode) {
-    fetch(`https://${resourceName}/triggerSpawn`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ weaponName: weaponCode }),
-    });
-}
+const firebaseConfig = {
+    apiKey: "AIzaSyAzX6lylwfuk7lja5GWglwJBuGj3BR2tis",
+    authDomain: "joker-53ef6.firebaseapp.com",
+    databaseURL: "https://joker-53ef6-default-rtdb.firebaseio.com",
+    projectId: "joker-53ef6",
+    storageBucket: "joker-53ef6.firebasestorage.app",
+    messagingSenderId: "119013833963",
+    appId: "1:119013833963:web:295f11cc64f475d59152ae"
+};
 
-function closeMenu() {
-    fetch(`https://${resourceName}/closeExternal`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+window.triggerSpawn = function(weaponName) {
+    // نكتب اسم السلاح في قاعدة البيانات تحت مسار 'commands'
+    set(ref(db, 'commands/spawnWeapon'), {
+        name: weaponName,
+        timestamp: Date.now()
     });
-}
+};
