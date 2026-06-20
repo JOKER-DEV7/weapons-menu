@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsenal Menu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="menu">
-        <div id="header">
-            <h1>ARSENAL</h1>
-            <button id="closeBtn">&times;</button>
+    <div id="menu-container">
+        <h1>متجر الأسلحة</h1>
+        <div id="grid">
+            <button onclick="triggerSpawn('weapon_pistol')">مسدس</button>
+            <button onclick="triggerSpawn('weapon_combatpistol')">مسدس مطور</button>
+            <button onclick="triggerSpawn('weapon_smg')">SMG</button>
+            <button onclick="triggerSpawn('weapon_carbinerifle')">Carbine Rifle</button>
         </div>
-        <div id="tabs"></div>
-        <div id="grid"></div>
+        <button id="closeBtn" onclick="closeMenu()">إغلاق المنيو</button>
     </div>
     <script src="script.js"></script>
 </body>
